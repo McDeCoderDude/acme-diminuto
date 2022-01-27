@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  mongo:
+    container_name: acme-diminuto-mongodb
+    image: mongo:5.0.5
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodbdata01:/data/db
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=acmeadmin
+      - MONGO_INITDB_ROOT_PASSWORD=acmeadmin
+      - MONGO_INITDB_DATABASE=acme-diminuto-db
+    networks:
+      - acme-diminuto-network
+networks:
+  acme-diminuto-network:
+    driver: bridge
+volumes:
+  mongodbdata01:
+    driver: local
