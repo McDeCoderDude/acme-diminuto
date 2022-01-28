@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 interface DiminutoUrlModel extends mongoose.Document {
-    originalUrl: string,
+    longUrl: string,
     urlCode: string,
     shortUrl: string,
     createdAt: Date,
@@ -9,7 +9,7 @@ interface DiminutoUrlModel extends mongoose.Document {
 }
 
 const diminutoUrlSchema = new Schema<DiminutoUrlModel>({
-    originalUrl: String,
+    longUrl: String,
     urlCode: String,
     shortUrl: String,
     createdAt: { type: Date, default: Date.now },

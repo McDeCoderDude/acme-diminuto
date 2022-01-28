@@ -1,18 +1,14 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const DB_URI = "mongodb://diminutouser:diminutouser@localhost:27017/acme-diminuto-db";
+dotenv.config();
 
 mongoose.Promise = global.Promise;
+const DB_URI = process.env.DB_URI || "mongodb://localhost:27017/test";
 mongoose.connect(DB_URI,{
     connectTimeoutMS: 5000,
     keepAlive: true,
     maxPoolSize: 10,
-},(err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('Connected to MongoDB');
-    }
 });
 
 export default mongoose.connection;

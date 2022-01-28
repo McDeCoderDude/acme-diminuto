@@ -1,10 +1,14 @@
 import express from 'express';
 import { json } from 'body-parser';
 import helmet from 'helmet';
+import cors from 'cors'
+import dotenv from 'dotenv';
 import connection from './config/db.config';
 import { diminutoRouter } from './routes/diminuto';
 import { redirectRouter } from './routes/redirect';
 import {debug} from "util";
+
+dotenv.config();
 
 // Database Configuration
 connection.once('open', () => {
@@ -18,11 +22,12 @@ connection.on('error', (err: string) => {
 const app = express();
 
 app.use(json());
+app.use(cors())
 app.use(helmet());
 app.use(diminutoRouter)
 app.use(redirectRouter)
 
-const PORT = 5000;
+const PORT = 3000;
 
 app.get('/', (req, res) =>
     res.send('Express + TypeScript Server'));

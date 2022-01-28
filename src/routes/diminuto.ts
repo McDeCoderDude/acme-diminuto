@@ -5,10 +5,10 @@ import DiminutoUrlModel from '../models/diminutoUrlModel';
 
 const router = express.Router();
 
-const baseUrl = 'http://localhost:5000';
+const baseUrl = process.env.DNS_URI || 'http://localhost:3000';
 
 router.post('/api/diminuto', async(req: Request, res: Response) => {
-   const {originalUrl: originalUrl} = req.body;
+   const {longUrl: longUrl} = req.body;
    if(!validUrl.isUri(baseUrl)) {
        return res.status(401).json({
            message: 'Invalid base url'
@@ -16,15 +16,15 @@ router.post('/api/diminuto', async(req: Request, res: Response) => {
    }
    const urlCode = shortid.generate();
 
-   if(validUrl.isUri(originalUrl)) {
+   if(validUrl.isUri(longUrl)) {
        try {
-           let url = await DiminutoUrlModel.findOne({originalUrl: originalUrl});
+           let url = await DiminutoUrlModel.findOne({longUrl: longUrl});
            if(url) {
                res.json(url)
            } else {
                const shortUrl = baseUrl + '/' + urlCode;
                url = new DiminutoUrlModel({
-                   originalUrl: originalUrl,
+                   longUrl: longUrl,
                    shortUrl: shortUrl,
                    urlCode: urlCode,
                    createdAt: new Date(),
@@ -45,6 +45,5 @@ router.post('/api/diminuto', async(req: Request, res: Response) => {
        });
    }
 });
-
 
 export { router as diminutoRouter };
