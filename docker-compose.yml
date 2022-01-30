@@ -1,19 +1,61 @@
 version: '3.9'
 services:
-  mongo:
+  mongodb:
     container_name: acme-diminuto-mongodb
     image: mongo:5.0.5
     ports:
-      - "27017:27017"
+      - ${MONGODB_LOCAL_PORT}:${MONGODB_DOCKER_PORT}
     volumes:
       - mongodbdata01:/data/db
-    restart: always
+      - ./mongodb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    restart: unless-stopped
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=acmeadmin
-      - MONGO_INITDB_ROOT_PASSWORD=acmeadmin
-      - MONGO_INITDB_DATABASE=acme-diminuto-db
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+      - MONGODB_USER=${MONGODB_USER}
+      - MONGODB_PASSWORD=${MONGODB_PASSWORD}
+      - MONGODB_DATABASE=${MONGODB_DATABASE}
     networks:
       - acme-diminuto-network
+
+  nginx:
+    container_name: acme-diminuto-nginx
+    image: nginx:1.21.6
+    tty: true
+    environment:
+      - NGINX_DOCKER_PORT=${NGINX_DOCKER_PORT}
+      - NGINX_HOST=${NGINX_HOST}
+      - NODE_DOCKER_PORT=${NODE_DOCKER_PORT}
+    depends_on:
+      - webapi
+    ports:
+      - ${NGINX_LOCAL_PORT}:${NGINX_DOCKER_PORT}
+    volumes:
+      - ./nginx/config:/etc/nginx/templates/
+    restart: unless-stopped
+    networks:
+      - acme-diminuto-network
+
+  webapi:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+    expose:
+      - ${NODE_DOCKER_PORT}
+    command: "npm start"
+    volumes:
+      - .:/app
+    networks:
+      - acme-diminuto-network
+
 networks:
   acme-diminuto-network:
     driver: bridge

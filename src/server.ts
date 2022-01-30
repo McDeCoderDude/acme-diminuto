@@ -22,12 +22,13 @@ connection.on('error', (err: string) => {
 const app = express();
 
 app.use(json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 app.use(helmet());
 app.use(diminutoRouter)
 app.use(redirectRouter)
 
-const PORT = 3000;
+const PORT = process.env.NODE_DOCKER_PORT || 3000;
 
 app.get('/', (req, res) =>
     res.send('Express + TypeScript Server'));
