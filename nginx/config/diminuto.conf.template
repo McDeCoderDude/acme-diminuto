@@ -1,5 +1,5 @@
 server {
-    listen ${NGINX_DOCKER_PORT};
+    listen ${NGINX_PORT};
     server_name ${NGINX_HOST};
 
     error_log  /var/log/nginx/error.log;
@@ -12,6 +12,6 @@ server {
         proxy_set_header X-Forwarded-Proto \$scheme;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
-        proxy_pass  http://${NODE_DOCKER_HOST}:${NODE_DOCKER_PORT};
+        proxy_pass  http://${NODE_HOST}:${NODE_PORT};
     }
 }

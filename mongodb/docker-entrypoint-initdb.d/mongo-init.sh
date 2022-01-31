@@ -12,6 +12,6 @@ if [ -n "${MONGODB_USER:-}" ] && [ -n "${MONGODB_PASSWORD:-}" ]; then
     pwd: '$MONGODB_PASSWORD',
     roles:[
       {role:'$MONGODB_ROLE', db:'$MONGODB_DATABASE'},
-      {role:'$MONGODB_ROLE', db:'$MONGODB_DATABASE_AGENDA'}
+      {role:'$MONGODB_ROLE', db:'$MONGODB_AGENDA_DATABASE'}
     ]});"
 fi

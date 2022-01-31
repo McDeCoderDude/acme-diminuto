@@ -29,7 +29,7 @@ app.use(helmet());
 app.use(diminutoRouter)
 app.use(redirectRouter)
 
-const PORT = process.env.NODE_DOCKER_PORT || 3000;
+const PORT = process.env.NODE_PORT || 3000;
 
 const server = app.listen(PORT, () => console.log(`⚡[server]: Sever is running http://localhost:${PORT}`));
 

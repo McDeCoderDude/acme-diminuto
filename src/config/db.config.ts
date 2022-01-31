@@ -6,11 +6,11 @@ dotenv.config();
 
 mongoose.Promise = global.Promise;
 
-const DB_URI = `mongodb://${process.env.MONGODB_DOCKER_HOST}/${process.env.MONGODB_DATABASE}`;
-const DB_URI_AGENDA = `mongodb://${process.env.MONGODB_DOCKER_HOST}/${process.env.MONGODB_DATABASE_AGENDA}`;
+const DB_URI = `mongodb://${process.env.MONGODB_HOST}/${process.env.MONGODB_DATABASE}`;
+const DB_AGENDA_URI = `mongodb://${process.env.MONGODB_HOST}/${process.env.MONGODB_AGENDA_DATABASE}`;
 
 mongoose.connect(DB_URI, {
-    authSource: process.env.MONGODB_DATABSE,
+    authSource: process.env.MONGODB_DATABASE,
     user: process.env.MONGODB_USER,
     pass: process.env.MONGODB_PASSWORD,
     maxPoolSize: 10,
@@ -21,7 +21,7 @@ mongoose.connect(DB_URI, {
 
 const agenda = new Agenda({
     db: {
-        address: DB_URI_AGENDA,
+        address: DB_AGENDA_URI,
         collection: 'agenda',
         options: {
             authSource: process.env.MONGODB_DATABASE,
@@ -36,4 +36,4 @@ const agenda = new Agenda({
 
 const connection = mongoose.connection;
 
-export {connection, agenda };
+export { connection, agenda };
