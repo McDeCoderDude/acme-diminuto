@@ -1,5 +1,5 @@
 import express, {Request, Response} from 'express';
-import DiminutoUrlModel from '../models/diminutoUrlModel';
+import DiminutoUrlModel from '../models/DiminutoUrlModel';
 
 
 const router = express.Router();

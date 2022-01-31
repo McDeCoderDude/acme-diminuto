@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dfed719b-129a-4ddd-9770-64ab2f7536db" name="eeventstaffing.com" url="http://estf.us">
+        <fileTransfer rootFolder="/var/www/diminuto" accessType="SFTP" host="eeventstaffing.com" port="22" sshConfigId="0a367414-848b-47b5-9c9a-e061d17bd60c" sshConfig="mcoderdude@eeventstaffing.com:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

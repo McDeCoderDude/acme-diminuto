@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import validUrl from 'valid-url';
 import shortid from 'shortid';
-import DiminutoUrlModel from '../models/diminutoUrlModel';
+import DiminutoUrlModel from '../models/DiminutoUrlModel';
 
 const router = express.Router();
 
@@ -41,7 +41,7 @@ router.post('/api/diminuto', async(req: Request, res: Response) => {
        }
    } else {
        res.status(401).json({
-           message: 'Invalid original url'
+           message: 'Invalid long Url'
        });
    }
 });
