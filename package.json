@@ -27,7 +27,7 @@
     "helmet": "^5.0.2",
     "mongodb": "^4.3.1",
     "mongoose": "^6.1.8",
-    "shortid": "^2.2.8",
+    "shortid": "^2.2.16",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
