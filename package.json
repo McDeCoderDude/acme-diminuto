@@ -28,7 +28,8 @@
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.4",
     "shortid": "^2.2.8",
-    "valid-url": "^1.0.9"
+    "valid-url": "^1.0.9",
+    "express-rate-limit": "^7.4.0"
   },
   "devDependencies": {
     "@types/agenda": "^4.1.0",
