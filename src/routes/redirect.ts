@@ -1,11 +1,15 @@
 import express, {Request, Response} from 'express';
 import DiminutoUrlModel from '../models/DiminutoUrlModel';
-
+import rateLimit from 'express-rate-limit';
 
 const router = express.Router();
 
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+});
 
-router.get('/:code', async (req: Request, res: Response) => {
+router.get('/:code', limiter, async (req: Request, res: Response) => {
     try {
         const url = await DiminutoUrlModel.findOne({
             urlCode: req.params.code
