@@ -2,12 +2,18 @@ import express, { Request, Response } from 'express';
 import validUrl from 'valid-url';
 import shortid from 'shortid';
 import DiminutoUrlModel from '../models/DiminutoUrlModel';
+import rateLimit from 'express-rate-limit';
 
 const router = express.Router();
 
 const baseUrl = process.env.DNS_URI || 'http://localhost:3000';
 
-router.post('/api/diminuto', async(req: Request, res: Response) => {
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+});
+
+router.post('/api/diminuto', limiter, async(req: Request, res: Response) => {
    const {longUrl: longUrl} = req.body;
    if(!validUrl.isUri(baseUrl)) {
        return res.status(401).json({
