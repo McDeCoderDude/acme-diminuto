@@ -18,7 +18,7 @@ router.post('/api/diminuto', async(req: Request, res: Response) => {
 
    if(validUrl.isUri(longUrl)) {
        try {
-           let url = await DiminutoUrlModel.findOne({longUrl: longUrl});
+           let url = await DiminutoUrlModel.findOne({longUrl: { $eq: longUrl }});
            if(url) {
                res.json(url)
            } else {
