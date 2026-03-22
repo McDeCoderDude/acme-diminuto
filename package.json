@@ -23,18 +23,16 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@agendajs/mongo-backend": "^4.0.0",
-    "agenda": "^6.2.3",
-    "body-parser": "^2.2.2",
-    "cors": "^2.8.6",
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.3.1",
-    "helmet": "^8.1.0",
-    "mongodb": "^7.1.0",
-    "mongoose": "^9.3.1",
-    "shortid": "^2.2.17",
-    "valid-url": "^1.0.9"
+    "agenda": "^4.4.0",
+    "body-parser": "^1.20.4",
+    "cors": "^2.8.5",
+    "express": "^4.22.0",
+    "helmet": "^5.1.1",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.4",
+    "shortid": "^2.2.8",
+    "valid-url": "^1.0.9",
+    "express-rate-limit": "^7.4.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.6",
