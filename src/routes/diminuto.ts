@@ -1,12 +1,12 @@
 import express, { Request, Response } from 'express';
-import validUrl from 'valid-url';
 import shortid from 'shortid';
 import DiminutoUrlModel from '../models/DiminutoUrlModel';
 import rateLimit from 'express-rate-limit';
+import { isSafeHttpUrl } from '../utils/urlValidation';
 
 const router = express.Router();
 
-const baseUrl = process.env.DNS_URI || 'http://localhost:3000';
+const getBaseUrl = () => process.env.DNS_URI || 'http://localhost:3000';
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -14,40 +14,40 @@ const limiter = rateLimit({
 });
 
 router.post('/api/diminuto', limiter, async(req: Request, res: Response) => {
-   const {longUrl: longUrl} = req.body;
-   if(!validUrl.isUri(baseUrl)) {
-       return res.status(401).json({
+   const { longUrl } = req.body;
+   const baseUrl = getBaseUrl();
+
+   if (!isSafeHttpUrl(baseUrl)) {
+       return res.status(400).json({
            message: 'Invalid base url'
        });
    }
+
+   if (!isSafeHttpUrl(longUrl)) {
+       return res.status(400).json({
+           message: 'Invalid long Url'
+       });
+   }
+
    const urlCode = shortid.generate();
 
-   if(validUrl.isUri(longUrl)) {
-       try {
-           let url = await DiminutoUrlModel.findOne({longUrl: { $eq: longUrl }});
-           if(url) {
-               res.json(url)
-           } else {
-               const shortUrl = baseUrl + '/' + urlCode;
-               url = new DiminutoUrlModel({
-                   longUrl: longUrl,
-                   shortUrl: shortUrl,
-                   urlCode: urlCode,
-                   createdAt: new Date(),
-                   updatedAt: new Date()
-               });
-               await url.save();
-               res.json(url);
-           }
-       } catch (err){
-           console.log(err);
-           res.status(500).json({
-               message: 'Server error'
-           });
+   try {
+       const existing = await DiminutoUrlModel.findOne({ longUrl: { $eq: longUrl } });
+       if (existing) {
+           return res.json(existing);
        }
-   } else {
-       res.status(401).json({
-           message: 'Invalid long Url'
+
+       const shortUrl = `${baseUrl}/${urlCode}`;
+       const created = await DiminutoUrlModel.create({
+           longUrl,
+           shortUrl,
+           urlCode
+       });
+       return res.json(created);
+   } catch (err){
+       console.log(err);
+       return res.status(500).json({
+           message: 'Server error'
        });
    }
 });

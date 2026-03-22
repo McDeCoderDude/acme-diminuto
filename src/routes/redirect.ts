@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';
 import DiminutoUrlModel from '../models/DiminutoUrlModel';
 import rateLimit from 'express-rate-limit';
+import { isSafeHttpUrl, isSafeShortCode } from '../utils/urlValidation';
 
 const router = express.Router();
 
@@ -10,11 +11,20 @@ const limiter = rateLimit({
 });
 
 router.get('/:code', limiter, async (req: Request, res: Response) => {
+    const code = Array.isArray(req.params.code) ? req.params.code[0] : req.params.code;
+
+    if (!isSafeShortCode(code)) {
+        return res.status(400).send('Invalid short code');
+    }
+
     try {
         const url = await DiminutoUrlModel.findOne({
-            urlCode: req.params.code
+            urlCode: code
         });
         if(url) {
+            if (!isSafeHttpUrl(url.longUrl)) {
+                return res.status(400).send('Unsafe redirect url');
+            }
             return res.redirect(url.longUrl);
         } else {
             return res.status(404).send('URL not found');
