@@ -41,6 +41,16 @@ describe('redirect route', () => {
         expect(response.headers.location).toBe('https://example.com/landing');
     });
 
+    it('returns 400 when stored redirect url is unsafe', async () => {
+        modelMock.findOne.mockResolvedValue({
+            longUrl: 'http://127.0.0.1:8080/private'
+        });
+
+        const response = await request(app).get('/abc123');
+        expect(response.status).toBe(400);
+        expect(response.text).toContain('Unsafe redirect url');
+    });
+
     it('returns 404 when code does not exist', async () => {
         modelMock.findOne.mockResolvedValue(null);
 

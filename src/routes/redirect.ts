@@ -1,7 +1,7 @@
 import express, {Request, Response} from 'express';
 import DiminutoUrlModel from '../models/DiminutoUrlModel';
 import rateLimit from 'express-rate-limit';
-import { isSafeShortCode } from '../utils/urlValidation';
+import { isSafeHttpUrl, isSafeShortCode } from '../utils/urlValidation';
 
 const router = express.Router();
 
@@ -22,6 +22,9 @@ router.get('/:code', limiter, async (req: Request, res: Response) => {
             urlCode: code
         });
         if(url) {
+            if (!isSafeHttpUrl(url.longUrl)) {
+                return res.status(400).send('Unsafe redirect url');
+            }
             return res.redirect(url.longUrl);
         } else {
             return res.status(404).send('URL not found');
