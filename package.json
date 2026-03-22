@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec \"npx ts-node\" src/server.ts",
+    "start:prod": "node dist/server.js",
     "build": "npx tsc --project ./"
   },
   "keywords": [
@@ -27,6 +28,7 @@
     "helmet": "^7.1.0",
     "mongodb": "^6.9.0",
     "mongoose": "^8.6.3",
+    "dotenv": "^14.3.2",
     "shortid": "^2.2.8",
     "valid-url": "^1.0.9",
     "express-rate-limit": "^7.4.0"
@@ -42,7 +44,6 @@
     "@types/node": "^16.11.21",
     "@types/shortid": "^0.0.29",
     "@types/valid-url": "^1.0.3",
-    "dotenv": "^14.3.2",
     "eslint": "^8.7.0",
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",

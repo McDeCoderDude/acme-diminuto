@@ -9,8 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "ignoreDeprecations": "6.0"
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": [
     "node_modules"

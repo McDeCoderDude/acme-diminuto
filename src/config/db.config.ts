@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = globalThis.Promise;
 
 const DB_URI = `mongodb://${process.env.MONGODB_HOST}/${process.env.MONGODB_DATABASE}`;
 const DB_AGENDA_URI = `mongodb://${process.env.MONGODB_HOST}/${process.env.MONGODB_AGENDA_DATABASE}`;

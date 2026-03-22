@@ -51,9 +51,6 @@ services:
       - mongodb
     expose:
       - ${NODE_PORT}
-    command: "npm start"
-    volumes:
-      - .:/app
     networks:
       - acme-diminuto-network
 
