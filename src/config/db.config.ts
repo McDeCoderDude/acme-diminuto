@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 import { Agenda} from 'agenda';
+import { MongoBackend } from '@agendajs/mongo-backend';
 import dotenv from "dotenv";
 
 dotenv.config();
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = globalThis.Promise;
 
 const DB_URI = `mongodb://${process.env.MONGODB_HOST}/${process.env.MONGODB_DATABASE}`;
 const DB_AGENDA_URI = `mongodb://${process.env.MONGODB_HOST}/${process.env.MONGODB_AGENDA_DATABASE}`;
@@ -15,12 +16,11 @@ mongoose.connect(DB_URI, {
     pass: process.env.MONGODB_PASSWORD,
     maxPoolSize: 10,
     serverSelectionTimeoutMS: 5000,
-    socketTimeoutMS: 45000,
-    keepAlive: true,
+    socketTimeoutMS: 45000
 });
 
 const agenda = new Agenda({
-    db: {
+    backend: new MongoBackend({
         address: DB_AGENDA_URI,
         collection: 'agenda',
         options: {
@@ -29,9 +29,8 @@ const agenda = new Agenda({
                 username: process.env.MONGODB_USER,
                 password: process.env.MONGODB_PASSWORD,
             }
-        },
-
-    }
+        }
+    })
 });
 
 const connection = mongoose.connection;

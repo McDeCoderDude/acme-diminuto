@@ -1,0 +1,6 @@
+name: acme-diminuto-codeql-config
+
+paths-ignore:
+  - coverage/**
+  - dist/**
+  - node_modules/**
