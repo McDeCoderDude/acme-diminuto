@@ -9,11 +9,30 @@ interface DiminutoUrlModel extends mongoose.Document {
 }
 
 const diminutoUrlSchema = new Schema<DiminutoUrlModel>({
-    longUrl: String,
-    urlCode: String,
-    shortUrl: String,
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now }
+    longUrl: {
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 2048,
+        index: true
+    },
+    urlCode: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        minlength: 4,
+        maxlength: 32,
+        index: true
+    },
+    shortUrl: {
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 2083
+    }
+}, {
+    timestamps: true
 });
 
 export default mongoose.model("DiminutoUrlModel", diminutoUrlSchema);
