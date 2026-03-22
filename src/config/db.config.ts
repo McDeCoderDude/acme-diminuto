@@ -15,8 +15,7 @@ mongoose.connect(DB_URI, {
     pass: process.env.MONGODB_PASSWORD,
     maxPoolSize: 10,
     serverSelectionTimeoutMS: 5000,
-    socketTimeoutMS: 45000,
-    keepAlive: true,
+    socketTimeoutMS: 45000
 });
 
 const agenda = new Agenda({

@@ -1,8 +1,7 @@
-version: '3.9'
 services:
   mongodb:
     container_name: acme-diminuto-mongodb
-    image: mongo:5.0.5
+    image: mongo:7.0.14
     ports:
       - ${MONGODB_LOCAL_PORT}:${MONGODB_PORT}
     volumes:
@@ -22,7 +21,7 @@ services:
 
   nginx:
     container_name: acme-diminuto-nginx
-    image: nginx:1.21.6
+    image: nginx:1.27.1
     tty: true
     environment:
       - NGINX_HOST=${NGINX_HOST}
