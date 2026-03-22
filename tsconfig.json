@@ -9,7 +9,8 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "src/**/*.ts"
