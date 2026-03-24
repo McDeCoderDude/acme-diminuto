@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Agenda } from "agenda";
+import { MongoBackend } from "@agendajs/mongo-backend";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -19,7 +20,7 @@ mongoose.connect(DB_URI, {
 });
 
 const agenda = new Agenda({
-  db: {
+  backend: new MongoBackend({
     address: DB_AGENDA_URI,
     collection: "agenda",
     options: {
@@ -29,7 +30,7 @@ const agenda = new Agenda({
         password: process.env.MONGODB_PASSWORD,
       },
     },
-  },
+  }),
 });
 
 const connection = mongoose.connection;
