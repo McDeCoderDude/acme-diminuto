@@ -1,0 +1,4 @@
+paths-ignore:
+  - "coverage/**"
+  - "coverage/**/*.js"
+  - "coverage/**/*.ts"
