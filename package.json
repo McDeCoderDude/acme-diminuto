@@ -44,7 +44,7 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^25.5.0",
     "@types/shortid": "^2.2.0",
-    "@types/supertest": "^6.0.3",
+    "@types/supertest": "^7.2.0",
     "@types/valid-url": "^1.0.7",
     "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^10.1.0",
