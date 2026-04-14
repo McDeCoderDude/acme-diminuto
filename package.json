@@ -31,7 +31,7 @@
     "express": "^5.2.1",
     "helmet": "^5.1.1",
     "mongodb": "^7.1.1",
-    "mongoose": "^8.9.5",
+    "mongoose": "^9.4.1",
     "shortid": "^2.2.8",
     "valid-url": "^1.0.9",
     "express-rate-limit": "^7.4.0"
