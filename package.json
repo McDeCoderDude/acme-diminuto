@@ -24,17 +24,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "agenda": "^6.2.4",
     "@agendajs/mongo-backend": "^4.0.1",
+    "agenda": "^6.2.4",
     "body-parser": "^2.2.2",
+    "bson": "^7.2.0",
     "cors": "^2.8.5",
     "express": "^5.2.1",
+    "express-rate-limit": "^7.4.0",
     "helmet": "^5.1.1",
     "mongodb": "^7.1.1",
     "mongoose": "^9.4.1",
     "shortid": "^2.2.8",
-    "valid-url": "^1.0.9",
-    "express-rate-limit": "^7.4.0"
+    "valid-url": "^1.0.9"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.6",
@@ -43,7 +44,6 @@
     "@types/express": "^5.0.6",
     "@types/helmet": "^4.0.0",
     "@types/mongodb": "^4.0.7",
-    "@types/mongoose": "^5.11.97",
     "@types/node": "^25.6.0",
     "@types/shortid": "^2.2.0",
     "@types/supertest": "^7.2.0",
