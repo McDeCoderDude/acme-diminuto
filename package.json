@@ -31,9 +31,9 @@
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "express-rate-limit": "^8.3.2",
-    "helmet": "^5.1.1",
-    "mongodb": "^7.1.1",
-    "mongoose": "^9.4.1",
+    "helmet": "^8.1.0",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.1",
     "shortid": "^2.2.8",
     "valid-url": "^1.0.9"
   },
@@ -53,7 +53,7 @@
     "nodemon": "^3.1.14",
     "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.2",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.1"
   }
 }
