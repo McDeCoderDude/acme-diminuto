@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for routes/redirect.ts</title>
+    <title>Code coverage report for utils/urlCode.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">routes</a> redirect.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">utils</a> urlCode.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -93,96 +93,66 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import express, {Request, Response} from 'express';
-import DiminutoUrlModel from '../models/DiminutoUrlModel';
-import rateLimit from 'express-rate-limit';
-import { isSafeHttpUrl, isSafeShortCode } from '../utils/urlValidation';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import shortid from 'shortid';
 &nbsp;
-const router = express.Router();
+const DEFAULT_EXCLUDED_URL_CODE_CHARACTERS = '_-';
+const MAX_GENERATION_ATTEMPTS = 25;
 &nbsp;
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
-});
-&nbsp;
-export async function redirectToLongUrl(req: Request, res: Response) {
-    const code = Array.isArray(req.params.code) ? req.params.code[0] : req.params.code;
-&nbsp;
-    if (!isSafeShortCode(code)) {
-        return res.status(400).send('Invalid short code');
-    }
-&nbsp;
-    try {
-        const url = await DiminutoUrlModel.findOne({
-            urlCode: code
-        });
-        if(url) {
-            if (!isSafeHttpUrl(url.longUrl)) {
-                return res.status(400).send('Unsafe redirect url');
-            }
-            return res.redirect(url.longUrl);
-        } else {
-            return res.status(404).send('URL not found');
-        }
-    } catch (err) {
-       console.error(err);
-       res.status(500).send('Internal Server Error');
-    }
+export function getExcludedUrlCodeCharacters(rawValue = process.env.URL_CODE_EXCLUDED_CHARS): string[] {
+    const normalized = (rawValue || DEFAULT_EXCLUDED_URL_CODE_CHARACTERS).replace(/\s+/g, '');
+    return [...new Set(normalized.split('').filter(Boolean))];
 }
 &nbsp;
-router.get('/:code', limiter, redirectToLongUrl);
+export function hasExcludedUrlCodeCharacters(
+    code: string,
+    excludedCharacters = getExcludedUrlCodeCharacters()
+): boolean {
+    return excludedCharacters.some((character) =&gt; code.includes(character));
+}
 &nbsp;
-export { router as redirectRouter };
+export function generateUrlCode(
+    generate: () =&gt; string = shortid.generate,
+    excludedCharacters = getExcludedUrlCodeCharacters()
+): string {
+    for (let attempt = 0; attempt &lt; MAX_GENERATION_ATTEMPTS; attempt += 1) {
+        const candidate = generate();
+        if (!hasExcludedUrlCodeCharacters(candidate, excludedCharacters)) {
+            return candidate;
+        }
+    }
+&nbsp;
+    throw new Error('Unable to generate a URL code without excluded characters');
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

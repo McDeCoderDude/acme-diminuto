@@ -10,7 +10,7 @@ const limiter = rateLimit({
     max: 100, // limit each IP to 100 requests per windowMs
 });
 
-router.get('/:code', limiter, async (req: Request, res: Response) => {
+export async function redirectToLongUrl(req: Request, res: Response) {
     const code = Array.isArray(req.params.code) ? req.params.code[0] : req.params.code;
 
     if (!isSafeShortCode(code)) {
@@ -33,6 +33,8 @@ router.get('/:code', limiter, async (req: Request, res: Response) => {
        console.error(err);
        res.status(500).send('Internal Server Error');
     }
-});
+}
+
+router.get('/:code', limiter, redirectToLongUrl);
 
 export { router as redirectRouter };

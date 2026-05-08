@@ -61,6 +61,7 @@ Create a `.env` file in the project root and define values similar to:
 NODE_ENV=development
 NODE_PORT=3000
 DNS_URI=http://localhost:3000
+URL_CODE_EXCLUDED_CHARS=_-
 
 # MongoDB
 MONGODB_HOST=localhost:27017
