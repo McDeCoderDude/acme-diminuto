@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@agendajs/mongo-backend": "^4.0.1",
+    "@agendajs/mongo-backend": "^4.0.2",
     "agenda": "^6.2.4",
     "body-parser": "^2.2.2",
     "bson": "^7.2.0",
