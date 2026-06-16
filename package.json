@@ -26,7 +26,7 @@
   "dependencies": {
     "@agendajs/mongo-backend": "^4.0.2",
     "agenda": "^6.2.4",
-    "body-parser": "^2.2.2",
+    "body-parser": "^2.3.0",
     "bson": "^7.2.0",
     "cors": "^2.8.5",
     "express": "^5.2.1",
