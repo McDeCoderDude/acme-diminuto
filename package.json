@@ -33,7 +33,7 @@
     "express-rate-limit": "^8.5.2",
     "helmet": "^8.2.0",
     "mongodb": "^7.4.0",
-    "mongoose": "^9.7.3",
+    "mongoose": "^9.7.4",
     "shortid": "^2.2.8",
     "valid-url": "^1.0.9"
   },
@@ -44,7 +44,7 @@
     "@types/express": "^5.0.6",
     "@types/helmet": "^4.0.0",
     "@types/mongodb": "^4.0.7",
-    "@types/node": "^26.0.1",
+    "@types/node": "^26.1.0",
     "@types/shortid": "^2.2.0",
     "@types/supertest": "^7.2.0",
     "@types/valid-url": "^1.0.7",
@@ -54,6 +54,6 @@
     "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   }
 }
