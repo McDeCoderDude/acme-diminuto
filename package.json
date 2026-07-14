@@ -46,7 +46,7 @@
     "@types/mongodb": "^4.0.7",
     "@types/node": "^26.1.0",
     "@types/shortid": "^2.2.0",
-    "@types/supertest": "^7.2.0",
+    "@types/supertest": "^7.2.1",
     "@types/valid-url": "^1.0.7",
     "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^10.6.0",
