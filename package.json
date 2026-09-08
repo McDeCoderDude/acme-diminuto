@@ -36,7 +36,7 @@
     "express-rate-limit": "^8.7.0",
     "helmet": "^8.3.0",
     "mongodb": "^7.6.0",
-    "mongoose": "^9.9.3",
+    "mongoose": "^9.9.5",
     "shortid": "^2.2.8",
     "valid-url": "^1.0.9"
   },
@@ -51,7 +51,7 @@
     "@types/shortid": "^2.2.0",
     "@types/supertest": "^7.2.1",
     "@types/valid-url": "^1.0.7",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^5.0.0",
     "eslint": "^10.9.1",
     "nodemon": "^3.1.14",
     "supertest": "^7.1.4",
