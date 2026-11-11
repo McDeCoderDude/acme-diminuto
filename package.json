@@ -24,10 +24,11 @@
   },
   "license": "MIT",
   "overrides": {
-    "nanoid": "^3.3.18"
+    "nanoid": "^3.3.18",
+    "minimatch": ">=11.0.1"
   },
   "dependencies": {
-    "@agendajs/mongo-backend": "^4.0.3",
+    "@agendajs/mongo-backend": "^4.0.4",
     "agenda": "^6.2.7",
     "body-parser": "^2.4.0",
     "bson": "^7.3.4",
